@@ -19,16 +19,15 @@ namespace LoyaltyQuiz {
 
 			labelHeader.Text = Properties.Settings.Default.TextRateDoctorHeader;
 			labelSubtitle.Text = Properties.Settings.Default.TextRateDoctorSubtitle;
-
-			closeButton.Visible = true;
+			
 			pictureBoxLogo.Visible = false;
 
 			Dictionary<string, Image> smiles = new Dictionary<string, Image>() {
-				{"Отлично", Properties.Resources.smile_love },
-				{"Хорошо", Properties.Resources.smile_happy },
-				{"Затрудняюсь ответить", Properties.Resources.smile_neutral },
+				{"Плохо", Properties.Resources.smile_angry },
 				{"Не очень", Properties.Resources.smile_sad },
-				{"Плохо", Properties.Resources.smile_angry }
+				{"Затрудняюсь ответить", Properties.Resources.smile_neutral },
+				{"Хорошо", Properties.Resources.smile_happy },
+				{"Отлично", Properties.Resources.smile_love }
 			};
 
 			int elements = smiles.Count;
@@ -40,12 +39,13 @@ namespace LoyaltyQuiz {
 			int currentY = startY + availableHeight - elementHeight;
 
 			foreach (KeyValuePair<string, Image> smile in smiles) {
-				Button button = CreateButton(smile.Key, currentX, currentY, elementWidth, elementHeight, smile.Value);
-				button.TextImageRelation = TextImageRelation.Overlay;
-				button.ImageAlign = ContentAlignment.MiddleCenter;
-				button.TextAlign = ContentAlignment.BottomCenter;
-				currentX += elementWidth + gap;
-				Controls.Add(button);
+				//Panel panelSmile = CreateInnerPanel()
+				//Button button = Createdefaultbutton(smile.key, currentx, currenty, elementwidth, elementheight, smile.value);
+				//button.textimagerelation = textimagerelation.overlay;
+				//button.imagealign = contentalignment.middlecenter;
+				//button.textalign = contentalignment.bottomcenter;
+				//currentx += elementwidth + gap;
+				//controls.add(button);
 			}
 
 			Label labelDocposition = CreateLabel("Должность: " + doctor.Position, startX, startY + availableHeight - elementHeight - gap * 3, availableWidth, gap * 2);
@@ -64,6 +64,8 @@ namespace LoyaltyQuiz {
 			int labelHeight = pb.Height;
 			Label labelInfo1 = CreateLabel("Справочная информация", pb.Location.X + pb.Width + gap, startY, labelWidth, labelHeight);
 			Label labelInfo2 = CreateLabel("Информация о враче", startX, startY, labelWidth, labelHeight);
+
+			SetButtonCloseVisible(true);
 		}
 	}
 }

@@ -19,7 +19,7 @@ namespace LoyaltyQuiz.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -73,6 +73,16 @@ namespace LoyaltyQuiz.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BackButton2 {
+            get {
+                object obj = ResourceManager.GetObject("BackButton2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BottomLineContinuesClear {
             get {
                 object obj = ResourceManager.GetObject("BottomLineContinuesClear", resourceCulture);
@@ -96,6 +106,76 @@ namespace LoyaltyQuiz.Properties {
         internal static System.Drawing.Bitmap ButterflyClear {
             get {
                 object obj = ResourceManager.GetObject("ButterflyClear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonBack {
+            get {
+                object obj = ResourceManager.GetObject("ButtonBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonDown {
+            get {
+                object obj = ResourceManager.GetObject("ButtonDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonUp {
+            get {
+                object obj = ResourceManager.GetObject("ButtonUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DownButton {
+            get {
+                object obj = ResourceManager.GetObject("DownButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DropShadowButtonDefault {
+            get {
+                object obj = ResourceManager.GetObject("DropShadowButtonDefault", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DropShadowDepartment {
+            get {
+                object obj = ResourceManager.GetObject("DropShadowDepartment", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DropShadowDoctor {
+            get {
+                object obj = ResourceManager.GetObject("DropShadowDoctor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +246,16 @@ namespace LoyaltyQuiz.Properties {
         internal static System.Drawing.Bitmap UnknownDoctor {
             get {
                 object obj = ResourceManager.GetObject("UnknownDoctor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UpButton {
+            get {
+                object obj = ResourceManager.GetObject("UpButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

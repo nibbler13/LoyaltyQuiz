@@ -91,6 +91,9 @@
     </Compile>
     <Compile Include="LoggingSystem.cs" />
     <Compile Include="MailSystem.cs" />
+    <Compile Include="MyButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
@@ -155,6 +158,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UnknownDoctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowDepartment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowButtonDefault.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowDoctor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

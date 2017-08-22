@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -35,7 +36,7 @@ namespace LoyaltyQuiz {
 			foreach (Control control in Controls)
 				control.Click += FormMain_Click;
 			Click += FormMain_Click;
-			
+
 			_hookID = SetHook(_proc);
 			FormClosed += FormMain_FormClosed;
 			backgroundWorker.RunWorkerAsync();
@@ -55,8 +56,8 @@ namespace LoyaltyQuiz {
 			foreach (DataRow dataRow in dataTable.Rows) {
 				try {
 					string department = dataRow["DEPARTMENT"].ToString().ToLower();
-					string docname = dataRow["DOCNAME"].ToString().ToLower();
-					string docposition = dataRow["DOCPOSITION"].ToString().ToLower();
+					string docname = dataRow["DOCNAME"].ToString();
+					string docposition = dataRow["DOCPOSITION"].ToString();
 
 					Doctor doctor = new Doctor(docname, docposition);
 

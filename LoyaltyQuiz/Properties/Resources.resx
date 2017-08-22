@@ -151,4 +151,31 @@
   <data name="UnknownDoctor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UnknownDoctor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BackButton2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackButton2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DownButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DownButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowButtonDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowButtonDefault.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowDepartment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowDepartment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowDoctor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowDoctor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UpButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UpButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

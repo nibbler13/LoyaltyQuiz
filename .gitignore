@@ -263,3 +263,6 @@ __pycache__/
 *.settings
 LoyaltyQuiz/Properties/Settings.Designer.cs
 *.config
+*.png
+*.png
+*.xcf
