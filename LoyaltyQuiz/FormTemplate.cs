@@ -15,7 +15,7 @@ namespace LoyaltyQuiz {
 	public partial class FormTemplate : Form {
 		/// <summary>
 		///	main fields
-		private KeyValuePair<Button, PictureBox> buttonClose;
+		protected KeyValuePair<Button, PictureBox> buttonClose;
 		protected int width = 0;
 		protected int height = 0;
 		protected int gap = 0;
@@ -32,7 +32,7 @@ namespace LoyaltyQuiz {
 
 		/// <summary>
 		///	used for panel with custom buttons
-		protected Panel panel;
+		protected Panel panelRoot;
 		protected KeyValuePair<Button, PictureBox> buttonScrollUp;
 		protected KeyValuePair<Button, PictureBox> buttonScrollDown;
 		protected int locationY = 0;
@@ -43,7 +43,7 @@ namespace LoyaltyQuiz {
 		protected int currentY = 0;
 		protected int elementsInLine = 0;
 		protected int elementsLineCount = 0;
-		protected enum ElementType { Department, Doctor };
+		protected enum ElementType { Department, Doctor, Rate, Search };
 		/// </summary>
 		
 
@@ -105,67 +105,73 @@ namespace LoyaltyQuiz {
 			buttonClose.Key.Click += ButtonClose_Click;
 			buttonClose.Key.BringToFront();
 
-			SetButtonCloseVisible(false);
+			//SetButtonCloseVisible(true);
 		}
 
 		
 
 
 		protected KeyValuePair<Button, PictureBox> CreateDefaultButton(int x, int y, Image image) {
-			Button button = new Button();
-
 			int buttonSide = labelSubtitle.Height;
-			
-			//button.Text = str;
-			button.SetBounds(x, y, buttonSide, buttonSide);
-			button.BackColor = Properties.Settings.Default.ColorButtonMain;
-			button.Font = new Font(Properties.Settings.Default.FontSub.FontFamily, (int)(fontSize * 0.5));
-			button.FlatStyle = FlatStyle.Flat;
-			button.FlatAppearance.BorderSize = 0;
-			button.FlatAppearance.MouseDownBackColor = Properties.Settings.Default.ColorButtonMainPressed;
-			button.FlatAppearance.MouseOverBackColor = Properties.Settings.Default.ColorButtonMainSelected;
 
-			if (image != null) {
-				int imageWidth = image.Width;
-				int imageHeight = image.Height;
-				float imageScale = (float)imageWidth / (float)imageHeight;
-				imageHeight = (int)(buttonSide * 0.8f);
-				imageWidth = (int)(imageHeight * imageScale);
+			Button button = CreateButton("", x, y, buttonSide, buttonSide, fontSize);
+			Controls.Add(button);
 
-				if (imageWidth > buttonSide * 0.8) {
-					imageWidth = (int)(buttonSide * 0.8);
-					imageHeight = (int)(imageWidth / imageScale);
-				}
-
-				button.Image = ResizeImage(image, imageWidth, imageHeight);
-				button.ImageAlign = ContentAlignment.MiddleCenter;
-			}
-
+			if (image != null)
+				SetImageToButton(button, image);
 
 			PictureBox dropShadow = CreateDropShadow(button, Properties.Resources.DropShadowButtonDefault);
 			Controls.Add(dropShadow);
-			Controls.Add(button);
-
+			
 			dropShadow.BringToFront();
 			button.BringToFront();
 
 			return new KeyValuePair<Button, PictureBox>(button, dropShadow);
 		}
 
+		public static Button CreateButton(string str, int x, int y, int width, int height, int fontSize, double fontScale = 1.0) {
+			Button button = new Button();
+
+			button.Text = str;
+			button.TextAlign = ContentAlignment.MiddleCenter;
+			button.SetBounds(x, y, width, height);
+			button.BackColor = Properties.Settings.Default.ColorButtonMain;
+			button.Font = new Font(Properties.Settings.Default.FontSub.FontFamily, (int)(fontSize * fontScale));
+			button.FlatStyle = FlatStyle.Flat;
+			button.FlatAppearance.BorderSize = 0;
+			button.FlatAppearance.MouseDownBackColor = Properties.Settings.Default.ColorButtonMainPressed;
+			button.FlatAppearance.MouseOverBackColor = Properties.Settings.Default.ColorButtonMainSelected;
+
+			return button;
+		}
+
 		protected Panel CreateInnerPanel(string str, int x, int y, int width, int height, ElementType type) {
 			Image image;
 			string normalizedStr;
 			ContentAlignment alignment;
+			double maxSizeCoefficient = 0;
 
 			if (type == ElementType.Department) {
 				image = GetImageForDepartment(str);
 				normalizedStr = str.Replace("- ", "-").Replace(" -", "-").Replace("-", " - ");
 				normalizedStr = FirstCharToUpper(normalizedStr);
 				alignment = ContentAlignment.MiddleLeft;
-			} else {
+				maxSizeCoefficient = 0.5;
+			} else if (type == ElementType.Doctor) {
 				image = GetImageForDoctor(str);
 				normalizedStr = str.Replace(" ", Environment.NewLine).Replace(" ", Environment.NewLine);
 				alignment = ContentAlignment.MiddleCenter;
+				maxSizeCoefficient = 0.65;
+			} else if (type == ElementType.Rate) {
+				image = GetImageForRate(str);
+				normalizedStr = GetNameForRate(str);
+				alignment = ContentAlignment.MiddleCenter;
+				maxSizeCoefficient = 0.9;
+			} else {
+				image = GetImageForDoctor("?");
+				normalizedStr = str.Replace(" ", Environment.NewLine);
+				alignment = ContentAlignment.TopLeft;
+				maxSizeCoefficient = 0.65;
 			}
 
 			Panel panel = new Panel();
@@ -178,8 +184,8 @@ namespace LoyaltyQuiz {
 			bool isOversized = false;
 			int pictureBoxSide = (isHorizontal ? height : width) - border * 2;
 			int maxSide = (isHorizontal ? width : height);
-			if (pictureBoxSide > maxSide * 0.65) {
-				pictureBoxSide = (int)(maxSide * 0.65) - border;
+			if (pictureBoxSide > maxSide * maxSizeCoefficient) {
+				pictureBoxSide = (int)(maxSide * maxSizeCoefficient) - border;
 				isOversized = true;
 			}
 
@@ -247,7 +253,7 @@ namespace LoyaltyQuiz {
 			return label;
 		}
 
-		protected void CreateUpDownButtons() {
+		private void CreateUpDownButtons() {
 			int buttonSide = buttonClose.Key.Width;
 			Color color = Color.White;
 
@@ -268,7 +274,7 @@ namespace LoyaltyQuiz {
 			availableWidth -= buttonSide + gap;
 		}
 
-		protected PictureBox CreateDropShadow(Control control, Image image) {
+		public static PictureBox CreateDropShadow(Control control, Image image, int leftCornerShadow = 11, int rightCornerShadow = 19) {
 			PictureBox pictureBox = new PictureBox();
 
 			pictureBox.Image = image;
@@ -282,7 +288,7 @@ namespace LoyaltyQuiz {
 			return pictureBox;
 		}
 
-		protected void CreateMainPanel(int elementsInLine, int elementsLineCount, int totalElements) {
+		protected void CreateRootPanel(int elementsInLine, int elementsLineCount, int totalElements) {
 			this.elementsInLine = elementsInLine;
 			this.elementsLineCount = elementsLineCount;
 
@@ -294,28 +300,28 @@ namespace LoyaltyQuiz {
 			elementWidth = (availableWidth - gap * (elementsInLine - 1)) / elementsInLine;
 			elementHeight = (availableHeight - gap * (elementsLineCount - 1)) / elementsLineCount;
 
-			panel = new Panel();
-			panel.SetBounds(
+			panelRoot = new Panel();
+			panelRoot.SetBounds(
 				startX - leftCornerShadow,
 				startY - leftCornerShadow,
 				availableWidth + leftCornerShadow + rightCornerShadow,
 				availableHeight + leftCornerShadow + rightCornerShadow);
 
-			panel.HorizontalScroll.Visible = false;
-			panel.VerticalScroll.Visible = false;
-			panel.AutoScrollPosition = new Point(0, 0);
+			panelRoot.HorizontalScroll.Visible = false;
+			panelRoot.VerticalScroll.Visible = false;
+			panelRoot.AutoScrollPosition = new Point(0, 0);
 
 			int lines = (int)Math.Ceiling((double)totalElements / (double)elementsInLine);// - elementsLineCount;
 			Console.WriteLine("lines: " + lines);
-			panel.VerticalScroll.Maximum = lines * elementHeight + (gap * (lines - 1)) + leftCornerShadow + rightCornerShadow;
-			Controls.Add(panel);
+			panelRoot.VerticalScroll.Maximum = lines * elementHeight + (gap * (lines - 1)) + leftCornerShadow + rightCornerShadow;
+			Controls.Add(panelRoot);
 
 			if (Properties.Settings.Default.IsDebugMode)
-				panel.BackColor = Color.AliceBlue;
+				panelRoot.BackColor = Color.AliceBlue;
 
-			scrollDistance = panel.Height;
+			scrollDistance = panelRoot.Height;
 		}
-
+		
 
 
 		protected Image GetImageForDoctor(string docname) {
@@ -326,7 +332,7 @@ namespace LoyaltyQuiz {
 				//
 				//send message to stp
 				//
-				return Properties.Resources.UnknownDoctor;
+				return Properties.Resources.UnknownDepartment;
 			}
 
 			Random random = new Random();
@@ -335,7 +341,7 @@ namespace LoyaltyQuiz {
 				return Image.FromFile(files[fileNumber]);
 			} catch (Exception e) {
 				LoggingSystem.LogMessageToFile("Не удалось открыть файл с изображением: " + files[fileNumber]);
-				return Properties.Resources.UnknownDoctor;
+				return Properties.Resources.UnknownDepartment;
 			}
 
 		}
@@ -363,7 +369,22 @@ namespace LoyaltyQuiz {
 
 		}
 
-		private Bitmap ResizeImage(Image image, int width, int height) {
+		protected Image GetImageForRate(string rate) {
+			Dictionary<string, Image> rates = new Dictionary<string, Image>() {
+				{ "1", Properties.Resources.smile_angry },
+				{ "2", Properties.Resources.smile_sad },
+				{ "3", Properties.Resources.smile_neutral },
+				{ "4", Properties.Resources.smile_happy },
+				{ "5", Properties.Resources.smile_love }
+			};
+
+			if (!rates.ContainsKey(rate))
+				return rates["3"];
+
+			return rates[rate];
+		}
+
+		private static Bitmap ResizeImage(Image image, int width, int height) {
 			Rectangle destRect = new Rectangle(0, 0, width, height);
 			Bitmap destImage = new Bitmap(width, height);
 
@@ -391,14 +412,14 @@ namespace LoyaltyQuiz {
 
 		protected void ButtonScrollDown_Click(object sender, EventArgs e) {
 			Console.WriteLine("DownButton_Click");
-			if (locationY + scrollDistance >= panel.VerticalScroll.Maximum) {
-				locationY = panel.VerticalScroll.Maximum;
-				panel.AutoScrollPosition = new Point(0, locationY);
+			if (locationY + scrollDistance >= panelRoot.VerticalScroll.Maximum) {
+				locationY = panelRoot.VerticalScroll.Maximum;
+				panelRoot.AutoScrollPosition = new Point(0, locationY);
 				buttonScrollDown.Key.Visible = false;
 				buttonScrollDown.Value.Visible = false;
 			} else {
 				locationY += scrollDistance;
-				panel.VerticalScroll.Value = locationY;
+				panelRoot.VerticalScroll.Value = locationY;
 				buttonScrollUp.Key.Visible = true;
 				buttonScrollUp.Value.Visible = true;
 			}
@@ -408,12 +429,12 @@ namespace LoyaltyQuiz {
 			Console.WriteLine("UpButton_Click");
 			if (locationY - scrollDistance <= 0) {
 				locationY = 0;
-				panel.AutoScrollPosition = new Point(0, 0);
+				panelRoot.AutoScrollPosition = new Point(0, 0);
 				buttonScrollUp.Key.Visible = false;
 				buttonScrollUp.Value.Visible = false;
 			} else {
 				locationY -= scrollDistance;
-				panel.VerticalScroll.Value = locationY;
+				panelRoot.VerticalScroll.Value = locationY;
 				buttonScrollDown.Key.Visible = true;
 				buttonScrollDown.Value.Visible = true;
 			}
@@ -430,8 +451,46 @@ namespace LoyaltyQuiz {
 
 
 
+
+		public static void SetImageToButton(Button button, Image image) {
+			int buttonSide = button.Width;
+			int imageWidth = image.Width;
+			int imageHeight = image.Height;
+			float imageScale = (float)imageWidth / (float)imageHeight;
+			imageHeight = (int)(buttonSide * 0.8f);
+			imageWidth = (int)(imageHeight * imageScale);
+
+			if (imageWidth > buttonSide * 0.8) {
+				imageWidth = (int)(buttonSide * 0.8);
+				imageHeight = (int)(imageWidth / imageScale);
+			}
+
+			button.Image = ResizeImage(image, imageWidth, imageHeight);
+			button.ImageAlign = ContentAlignment.MiddleCenter;
+		}
+
+		protected void BindEventHandlerToPanel(Panel panel, EventHandler eventHandler) {
+			panel.Click += eventHandler;
+			foreach (Control control in panel.Controls)
+				control.Click += eventHandler;
+		}
+
+		private string GetNameForRate(string str) {
+			Dictionary<string, string> rates = new Dictionary<string, string>() {
+				{ "1", Properties.Settings.Default.FromRateDoctorMark1 },
+				{ "2", Properties.Settings.Default.FromRateDoctorMark2 },
+				{ "3", Properties.Settings.Default.FromRateDoctorMark3 },
+				{ "4", Properties.Settings.Default.FromRateDoctorMark4 },
+				{ "5", Properties.Settings.Default.FromRateDoctorMark5 }
+			};
+
+			if (!rates.ContainsKey(str))
+				return "unkown";
+
+			return rates[str];
+		}
 		
-		private static string FirstCharToUpper(string input) {
+		public static string FirstCharToUpper(string input) {
 			if (String.IsNullOrEmpty(input))
 				return input;
 			return input.First().ToString().ToUpper() + String.Join("", input.Skip(1));
@@ -456,10 +515,8 @@ namespace LoyaltyQuiz {
 
 				Panel innerPanel = CreateInnerPanel(element, currentX, currentY, elementWidth, elementHeight, type);
 
-				panel.Controls.Add(innerPanel);
-				innerPanel.Click += eventHandler;
-				foreach (Control control in innerPanel.Controls)
-					control.Click += eventHandler;
+				panelRoot.Controls.Add(innerPanel);
+				BindEventHandlerToPanel(innerPanel, eventHandler);
 
 				Image image;
 				if (type == ElementType.Department) {
@@ -470,7 +527,7 @@ namespace LoyaltyQuiz {
 
 				PictureBox dropShadow = CreateDropShadow(innerPanel, image);
 
-				panel.Controls.Add(dropShadow);
+				panelRoot.Controls.Add(dropShadow);
 				dropShadow.SendToBack();
 				innerPanel.BringToFront();
 
@@ -486,6 +543,38 @@ namespace LoyaltyQuiz {
 			}
 		}
 
+		protected void SetLabelsText(string header, string subtitle) {
+			SetLabelHeaderText(header);
+			SetLabelSubtitleText(subtitle);
+		}
+
+		protected void SetLabelHeaderText(string header) {
+			labelHeader.Text = header;
+		}
+
+		protected void SetLabelSubtitleText(string subtitle) {
+			labelSubtitle.Text = subtitle;
+		}
+
+		protected void SetLogoVisible(bool isVisisble) {
+			pictureBoxLogo.Visible = isVisisble;
+		}
+
+		protected void SetHeaderColor(Color color) {
+			labelHeader.BackColor = color;
+		}
+
+		protected void CloseAllFormsExceptMain() {
+			List<Form> openForms = new List<Form>();
+
+			foreach (Form f in Application.OpenForms)
+				openForms.Add(f);
+
+			foreach (Form f in openForms) {
+				if (f.Name != "FormMain")
+					f.Close();
+			}
+		}
 
 
 		private void FormTemplate_KeyDown(object sender, KeyEventArgs e) {

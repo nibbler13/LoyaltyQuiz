@@ -17,55 +17,57 @@ namespace LoyaltyQuiz {
 
 			this.doctor = doctor;
 
-			labelHeader.Text = Properties.Settings.Default.TextRateDoctorHeader;
-			labelSubtitle.Text = Properties.Settings.Default.TextRateDoctorSubtitle;
+			string docInfo = "";
+			docInfo += doctor.Name + Environment.NewLine;// + Environment.NewLine;
+			docInfo += doctor.Position;
+
+			SetLabelsText(
+				docInfo,
+				Properties.Settings.Default.TextRateDoctorSubtitle);
+
+			SetLogoVisible(false);
+
+			List<string> rates = new List<string>() { "1", "2", "3", "4", "5" };
+
+			elementsInLine = rates.Count;
+			elementWidth = ((int)(availableWidth * 0.66)  - gap * (elementsInLine - 1)) / elementsInLine;
+			elementHeight = (int)(availableHeight * 0.35);
 			
-			pictureBoxLogo.Visible = false;
+			currentX = (int)(startX + (availableWidth * 0.33) / 2);
+			currentY = startY + availableHeight - elementHeight;
 
-			Dictionary<string, Image> smiles = new Dictionary<string, Image>() {
-				{"Плохо", Properties.Resources.smile_angry },
-				{"Не очень", Properties.Resources.smile_sad },
-				{"Затрудняюсь ответить", Properties.Resources.smile_neutral },
-				{"Хорошо", Properties.Resources.smile_happy },
-				{"Отлично", Properties.Resources.smile_love }
-			};
+			foreach (string rate in rates) {
+				Panel panelRate = CreateInnerPanel(rate, currentX, currentY, elementWidth, elementHeight, ElementType.Rate);
+				currentX += elementWidth + gap;
+				Controls.Add(panelRate);
 
-			int elements = smiles.Count;
-			int elementWidth = (availableWidth  - gap * (elements - 1)) / elements;
-			int elementHeight = (int)(availableHeight * 0.3);
+				PictureBox dropShadow = CreateDropShadow(panelRate, Properties.Resources.DropShadowRate);
+				Controls.Add(dropShadow);
+				dropShadow.SendToBack();
 
-
-			int currentX = startX;
-			int currentY = startY + availableHeight - elementHeight;
-
-			foreach (KeyValuePair<string, Image> smile in smiles) {
-				//Panel panelSmile = CreateInnerPanel()
-				//Button button = Createdefaultbutton(smile.key, currentx, currenty, elementwidth, elementheight, smile.value);
-				//button.textimagerelation = textimagerelation.overlay;
-				//button.imagealign = contentalignment.middlecenter;
-				//button.textalign = contentalignment.bottomcenter;
-				//currentx += elementwidth + gap;
-				//controls.add(button);
+				BindEventHandlerToPanel(panelRate, PanelRate_Click);
 			}
 
-			Label labelDocposition = CreateLabel("Должность: " + doctor.Position, startX, startY + availableHeight - elementHeight - gap * 3, availableWidth, gap * 2);
-			labelDocposition.Font = new Font(Properties.Settings.Default.FontSub.FontFamily, (int)(fontSize * 0.7));
-			Label labelDocname = CreateLabel("ФИО: " + doctor.Name, startX, labelDocposition.Location.Y - gap * 2, availableWidth, gap * 2);
-			labelDocname.Font = new Font(Properties.Settings.Default.FontSub.FontFamily, (int)(fontSize * 0.7));
+			PictureBox docPhoto = new PictureBox();
+			docPhoto.Image = GetImageForDoctor(doctor.Name);
+			docPhoto.SizeMode = PictureBoxSizeMode.Zoom;
+			int imageSide = availableHeight - elementHeight - gap;
+			docPhoto.SetBounds(startX + availableWidth / 2 - imageSide / 2, startY, imageSide, imageSide);
+			Controls.Add(docPhoto);
+		}
 
-			PictureBox pb = new PictureBox();
-			pb.Image = GetImageForDoctor(doctor.Name);
-			pb.SizeMode = PictureBoxSizeMode.Zoom;
-			int imageSize = labelDocname.Location.Y - gap - startY;
-			pb.SetBounds(startX + availableWidth / 2 - imageSize / 2, startY, imageSize, imageSize);
-			Controls.Add(pb);
+		private void PanelRate_Click(object sender, EventArgs e) {
+			Console.WriteLine("PanelRate_Click");
+			string tag = (sender as Control).Tag.ToString();
+			Console.WriteLine("tag: " + tag);
 
-			int labelWidth = pb.Location.X - gap - startX;
-			int labelHeight = pb.Height;
-			Label labelInfo1 = CreateLabel("Справочная информация", pb.Location.X + pb.Width + gap, startY, labelWidth, labelHeight);
-			Label labelInfo2 = CreateLabel("Информация о враче", startX, startY, labelWidth, labelHeight);
-
-			SetButtonCloseVisible(true);
+			if (tag.Equals("1") || tag.Equals("2")) {
+				FormComment formComment = new FormComment();
+				formComment.ShowDialog();
+			} else {
+				FormThanks formThanks = new FormThanks();
+				formThanks.ShowDialog();
+			}
 		}
 	}
 }

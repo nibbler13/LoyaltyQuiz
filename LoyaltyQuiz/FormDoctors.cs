@@ -16,17 +16,15 @@ namespace LoyaltyQuiz {
 			LoggingSystem.LogMessageToFile("Инициализация формы с врачами");
 			InitializeComponent();
 
-			labelHeader.Text =
-				Properties.Settings.Default.TextDoctorsFormHeader + Environment.NewLine +
-				"Отделение: " + depName;
-			labelSubtitle.Text = Properties.Settings.Default.TextDoctorsFormSubtitle;
+			SetLabelsText(
+				Properties.Settings.Default.TextDoctorsFormHeader + Environment.NewLine + "Отделение: " + depName,
+				Properties.Settings.Default.TextDoctorsFormSubtitle);
 
-			pictureBoxLogo.Visible = false;
+			SetLogoVisible(false);
+			
 			this.doctors = doctors;
 
-			SetButtonCloseVisible(true);
-
-			CreateMainPanel(
+			CreateRootPanel(
 				Properties.Settings.Default.FormDoctorsElementsInLine,
 				Properties.Settings.Default.FormDoctorsElementsLineCount,
 				doctors.Count);
@@ -38,9 +36,12 @@ namespace LoyaltyQuiz {
 			FillPanelWithElements(keys, ElementType.Doctor, PanelDoctor_Click);
 		}
 
+
+
+
 		private void PanelDoctor_Click(object sender, EventArgs e) {
 			string docname = (sender as Control).Tag.ToString();
-			Doctor selectedDoctor = new Doctor("", "");
+			Doctor selectedDoctor = new Doctor("", "", "", "");
 
 			Console.WriteLine("docname");
 

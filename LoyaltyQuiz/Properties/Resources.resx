@@ -127,9 +127,6 @@
   <data name="BottomLineContinuesClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bottom line continues clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="UnknownDepartment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UnknownDepartment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,20 +145,8 @@
   <data name="smile_sad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\smile_sad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UnknownDoctor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UnknownDoctor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BackButton2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackButton2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ButtonBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ButtonBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DownButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DownButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,5 +162,53 @@
   </data>
   <data name="UpButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UpButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackNext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackNext.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonBackspace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonBackspace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonCapslock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonCapslock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonClear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonOk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonShiftPressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonShiftPressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonShiftUnpressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonShiftUnpressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowKeyboardDoubledKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowKeyboardDoubledKey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowKeyboardMain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowKeyboardMain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowKeyboardSpace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowKeyboardSpace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowRate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowRate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropShadowSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropShadowSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -108,12 +108,11 @@
 		}
 
 		#endregion
-
-		protected System.Windows.Forms.Label labelHeader;
-		protected System.Windows.Forms.PictureBox pictureBoxBottomLineMain;
-		protected System.Windows.Forms.PictureBox pictureBoxBottomLineColors;
-		protected System.Windows.Forms.PictureBox pictureBoxLogo;
-		protected System.Windows.Forms.Label labelSubtitle;
+		private System.Windows.Forms.Label labelHeader;
+		private System.Windows.Forms.PictureBox pictureBoxLogo;
+		private System.Windows.Forms.Label labelSubtitle;
+		private System.Windows.Forms.PictureBox pictureBoxBottomLineMain;
+		private System.Windows.Forms.PictureBox pictureBoxBottomLineColors;
 	}
 }
 

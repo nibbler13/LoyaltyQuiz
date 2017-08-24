@@ -50,6 +50,18 @@
   <ItemGroup>
     <Compile Include="Doctor.cs" />
     <Compile Include="FBClient.cs" />
+    <Compile Include="FormCallback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCallback.Designer.cs">
+      <DependentUpon>FormCallback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormComment.Designer.cs">
+      <DependentUpon>FormComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDepartments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,11 +89,23 @@
     <Compile Include="FormMain.GlobalKeyDownHandling.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormQuizSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQuizSelect.Designer.cs">
+      <DependentUpon>FormQuizSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRateDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormRateDoctor.Designer.cs">
       <DependentUpon>FormRateDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSearch.Designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTemplate.cs">
       <SubType>Form</SubType>
@@ -89,15 +113,28 @@
     <Compile Include="FormTemplate.Designer.cs">
       <DependentUpon>FormTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormThanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThanks.Designer.cs">
+      <DependentUpon>FormThanks.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoggingSystem.cs" />
     <Compile Include="MailSystem.cs" />
-    <Compile Include="MyButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="OnscreenKeyboard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCallback.resx">
+      <DependentUpon>FormCallback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormComment.resx">
+      <DependentUpon>FormComment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTemplate.resx">
       <DependentUpon>FormTemplate.cs</DependentUpon>
@@ -188,6 +225,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DropShadowDoctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowRate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowKeyboardMain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowKeyboardSpace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowKeyboardDoubledKey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonBackspace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonCapslock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonShiftPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonShiftUnpressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropShadowSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonOk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonClose.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,7 @@ namespace LoyaltyQuiz {
 			}
 		}
 
+
 		private string position;
 		public string Position {
 			get {
@@ -20,9 +21,30 @@ namespace LoyaltyQuiz {
 			}
 		}
 
-		public Doctor(string name, string position) {
+
+		private string department;
+		public string Department {
+			get {
+				return department;
+			}
+		}
+
+		private string id;
+		public string Id {
+			get {
+				return id;
+			}
+		}
+
+
+
+
+
+		public Doctor(string name, string position, string department, string id) {
 			this.name = name;
 			this.position = position;
+			this.department = department;
+			this.id = id;
 		}
 	}
 }

@@ -14,11 +14,17 @@ namespace LoyaltyQuiz {
 			LoggingSystem.LogMessageToFile("Инициализация формы отображения ошибки");
 			InitializeComponent();
 
-			labelHeader.BackColor = Properties.Settings.Default.ColorErrorTitle;
-			labelHeader.Text = Properties.Settings.Default.TextErrorFormHeader;
-			labelSubtitle.Text = Properties.Settings.Default.TextErrorFormSubtitle;
+			//labelHeader.BackColor = Properties.Settings.Default.ColorErrorTitle;
+
+			SetLabelsText(
+				Properties.Settings.Default.TextErrorFormHeader,
+				Properties.Settings.Default.TextErrorFormSubtitle);
 
 			CreateLabel("Картинка с извинениями", startX, startY, availableWidth, availableHeight);
+
+			SetButtonCloseVisible(false);
+
+			SetHeaderColor(Properties.Settings.Default.ColorErrorTitle);
 		}
 	}
 }

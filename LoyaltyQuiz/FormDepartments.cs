@@ -15,14 +15,16 @@ namespace LoyaltyQuiz {
 		public FormDepartments(Dictionary<string, List<Doctor>> dictionaryOfDoctors) {
 			LoggingSystem.LogMessageToFile("Инициализация формы с департаментами");
 			InitializeComponent();
+			
+			SetLabelsText(
+				Properties.Settings.Default.TextDepartmentFormHeader,
+				Properties.Settings.Default.TextDepartmentFormSubtitle);
 
-			labelHeader.Text = Properties.Settings.Default.TextDepartmentFormHeader;
-			labelSubtitle.Text = Properties.Settings.Default.TextDepartmentFormSubtitle;
+			SetLogoVisible(false);
 
-			pictureBoxLogo.Visible = false;
 			this.dictionaryOfDoctors = dictionaryOfDoctors;
 
-			CreateMainPanel(
+			CreateRootPanel(
 				Properties.Settings.Default.FormDepartmentsElementsInLine,
 				Properties.Settings.Default.FormDepartmentsElementsLineCount,
 				dictionaryOfDoctors.Count);
@@ -30,10 +32,18 @@ namespace LoyaltyQuiz {
 			List<string> keys = dictionaryOfDoctors.Keys.ToList();
 			FillPanelWithElements(keys, ElementType.Department, PanelDepartment_Click);
 
-			SetButtonCloseVisible(true);
+			KeyValuePair<Button, PictureBox> buttonSearch = CreateDefaultButton(
+				buttonClose.Key.Location.X + buttonClose.Key.Width * 2,
+				buttonClose.Key.Location.Y,
+				Properties.Resources.ButtonSearch);
+
+			buttonSearch.Key.Click += ButtonSearch_Click;
 		}
 
-		
+		private void ButtonSearch_Click(object sender, EventArgs e) {
+			FormSearch formSearch = new FormSearch(dictionaryOfDoctors);
+			formSearch.ShowDialog();
+		}
 
 		private void PanelDepartment_Click(object sender, EventArgs e) {
 			string depname = (sender as Control).Tag.ToString();

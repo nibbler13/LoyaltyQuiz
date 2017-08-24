@@ -24,9 +24,10 @@ namespace LoyaltyQuiz {
 		public FormMain() {
 			LoggingSystem.LogMessageToFile("Инициализация основной формы");
 			InitializeComponent();
-			
-			labelHeader.Text = Properties.Settings.Default.TextMainFormHeader;
-			labelSubtitle.Text = Properties.Settings.Default.TextMainFormSubtitle;
+
+			SetLabelsText(
+				Properties.Settings.Default.TextMainFormHeader,
+				Properties.Settings.Default.TextMainFormSubtitle);
 
 			string info = "Информация про систему опросов" + Environment.NewLine + Environment.NewLine +
 				"Статичное или анимированное изображение" + Environment.NewLine +
@@ -40,6 +41,8 @@ namespace LoyaltyQuiz {
 			_hookID = SetHook(_proc);
 			FormClosed += FormMain_FormClosed;
 			backgroundWorker.RunWorkerAsync();
+
+			SetButtonCloseVisible(false);
 		}
 
 		private void UpdateListOfDoctors() {
@@ -59,7 +62,7 @@ namespace LoyaltyQuiz {
 					string docname = dataRow["DOCNAME"].ToString();
 					string docposition = dataRow["DOCPOSITION"].ToString();
 
-					Doctor doctor = new Doctor(docname, docposition);
+					Doctor doctor = new Doctor(docname, docposition, department, "123");
 
 					if (dictionary.ContainsKey(department)) {
 						if (dictionary[department].Contains(doctor))
@@ -91,8 +94,8 @@ namespace LoyaltyQuiz {
 				return;
 			}
 
-			FormDepartments formDepartments = new FormDepartments(dictionaryOfDoctors);
-			formDepartments.ShowDialog();
+			FormQuizSelect formQuizSelect = new FormQuizSelect(dictionaryOfDoctors);
+			formQuizSelect.ShowDialog();
 		}
 
 		private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e) {

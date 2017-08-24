@@ -24,9 +24,9 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineMain)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineColors)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+			//((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineMain)).BeginInit();
+			//((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineColors)).BeginInit();
+			//((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// backgroundWorker
@@ -41,9 +41,9 @@
 			this.ClientSize = new System.Drawing.Size(1600, 900);
 			this.Name = "FormMain";
 			this.Text = "FormMain";
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineMain)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineColors)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+			//((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineMain)).EndInit();
+			//((System.ComponentModel.ISupportInitialize)(this.pictureBoxBottomLineColors)).EndInit();
+			//((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
 			this.ResumeLayout(false);
 
 		}
