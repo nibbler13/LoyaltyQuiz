@@ -87,12 +87,15 @@ namespace LoyaltyQuiz {
 			SetButtonNextVisible(false);
 			SetLogoVisible(false);
 
-			maskedTextBox.Font = new Font(Properties.Settings.Default.FontSub.FontFamily, fontSize);
+			int maskedWidth = (int)(panelKeyboard.Width * 1.5);
+			maskedTextBox.Font = new Font(Properties.Settings.Default.FontSub.FontFamily, (int)(fontSize * 1.3));
 			maskedTextBox.SetBounds(
-				panelKeyboard.Location.X,
+				startX + availableWidth / 2 - maskedWidth / 2,
 				panelKeyboard.Location.Y - gap - buttonClose.Key.Height,
-				panelKeyboard.Width,
+				maskedWidth,
 				buttonClose.Key.Height);
+			maskedTextBox.Location = new Point(maskedTextBox.Location.X,
+				panelKeyboard.Location.Y - maskedTextBox.Height - gap);
 
 			maskedTextBox.TextChanged += MaskedTextBox_TextChanged;
 		}

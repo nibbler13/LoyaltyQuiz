@@ -29,7 +29,7 @@
 			// maskedTextBox
 			// 
 			this.maskedTextBox.Location = new System.Drawing.Point(746, 354);
-			this.maskedTextBox.Mask = "(999) 000-0000";
+			this.maskedTextBox.Mask = "+9 (999) 000-0000";
 			this.maskedTextBox.Name = "maskedTextBox";
 			this.maskedTextBox.Size = new System.Drawing.Size(100, 20);
 			this.maskedTextBox.TabIndex = 7;
@@ -40,7 +40,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1920, 1080);
+			this.ClientSize = new System.Drawing.Size(1612, 912);
 			this.Controls.Add(this.maskedTextBox);
 			this.Location = new System.Drawing.Point(0, 0);
 			this.Name = "FormCallback";

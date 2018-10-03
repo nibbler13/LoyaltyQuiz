@@ -188,7 +188,10 @@ namespace LoyaltyQuiz {
 					if (buttonKey.Tag == null)
 						buttonKey.Click += ButtonKey_Click;
 
-					if (keyName.Equals("shift") || keyName.Equals("backspace") || keyName.Equals("Ввод"))
+					if (keyName.Equals("shift") || 
+						keyName.Equals("backspace") || 
+						keyName.Equals("Ввод") ||
+						keyName.Equals("clear"))
 						buttonKey.BackColor = Properties.Settings.Default.ColorDisabled;
 
 					if (image != null) {
